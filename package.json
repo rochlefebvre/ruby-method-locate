@@ -1,7 +1,7 @@
 {
     "name": "ruby-method-locate",
-    "version": "0.0.5",
-    "description": "Finds position of ruby methods/modules/classes in a file. Intended for use in code editors.",
+    "version": "0.0.6",
+    "description": "A modified version of HookyQR/ruby-method-locate that finds the range of ruby methods/modules/classes in a file. Intended for use in code editors.",
     "keywords": [
         "ruby",
         "parser",
@@ -13,7 +13,7 @@
         "email": "hooky@qrmaster.co.nz",
         "url": "http://qrmaster.co.nz"
     },
-    "repository": "HookyQR/ruby-method-locate",
+    "repository": "rochlefebvre/ruby-method-locate",
     "license": "MIT",
     "devDependencies": {
         "mocha": "^2.5.3",

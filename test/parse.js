@@ -20,6 +20,9 @@ end`;
             expect(result.method.fn).to.have.property('posn', 5);
             expect(result.method['こんにちは']).to.have.property('posn', 16);
             expect(result.method['other!']).to.have.property('posn', 30);
+            expect(result.method.fn).to.have.property('end', 11);
+            expect(result.method['こんにちは']).to.have.property('end', 25);
+            expect(result.method['other!']).to.have.property('end', 40);
         });
         it('finds classes with methods', function() {
             const contextString = `
@@ -68,10 +71,11 @@ end`;
         });
     });
     context('with blocks', function() {
-        function check(contextString) {
+        function check(contextString, endPosn) {
             const result = parse(contextString);
 
             expect(result.method.fn).to.eql({
+                end: endPosn,
                 posn: 5
             });
             expect(result.method).to.have.property('other!');
@@ -86,7 +90,7 @@ end
 
 def other!
 end`;
-            check(contextString);
+            check(contextString, 39);
         });
         it("get around modifiers", function() {
             const contextString = `
@@ -100,7 +104,7 @@ end
 
 def other!
 end`;
-            check(contextString);
+            check(contextString, 123);
         });
         it("works with a modifier and a block on the same line", function() {
             const contextString = `
@@ -115,7 +119,7 @@ end
 
 def other!
 end`;
-            check(contextString);
+            check(contextString, 90);
         });
         it("recognises an assignment to a block result", function() {
             const contextString = `
@@ -132,7 +136,7 @@ end
 
 def other!
 end`;
-            check(contextString);
+            check(contextString, 81);
         });
         it("recognises a block following a semi colon", function() {
             const contextString = `
@@ -149,7 +153,7 @@ end
 
 def other!
 end`;
-            check(contextString);
+            check(contextString, 82);
         });
         it("recognises a while", function() {
             const contextString = `
@@ -163,7 +167,7 @@ end
 
 def other!
 end`;
-            check(contextString);
+            check(contextString, 70);
         });
         it("recognises an until", function() {
             const contextString = `
@@ -179,7 +183,7 @@ end
 
 def other!
 end`;
-            check(contextString);
+            check(contextString, 86);
         });
         it("recognises a for", function() {
             const contextString = `
@@ -191,7 +195,7 @@ end
 
 def other!
 end`;
-            check(contextString);
+            check(contextString, 45);
         });
         it("recognises a do", function() {
             const contextString = `
@@ -203,7 +207,7 @@ end
 
 def other!
 end`;
-            check(contextString);
+            check(contextString, 49);
         });
         it("recognises a case", function() {
             const contextString = `
@@ -218,7 +222,7 @@ end
 
 def other!
 end`;
-            check(contextString);
+            check(contextString, 72);
         });
     });
     context('with nested modules and classes', function() {

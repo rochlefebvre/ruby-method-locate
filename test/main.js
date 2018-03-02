@@ -20,24 +20,40 @@ describe('parse - main', function() {
                                             posn: {
                                                 char: 8,
                                                 line: 5
+                                            },
+                                            end: {
+                                                char: 7,
+                                                line: 6
                                             }
                                         },
                                         initialize: {
                                             posn: {
                                                 char: 8,
                                                 line: 2
+                                            },
+                                            end: {
+                                                char: 7,
+                                                line: 3
                                             }
                                         }
                                     },
                                     posn: {
                                         char: 8,
                                         line: 1
+                                    },
+                                    end: {
+                                        char: 5,
+                                        line: 7
                                     }
                                 }
                             },
                             posn: {
                                 char: 7,
                                 line: 0
+                            },
+                            end: {
+                                char: 3,
+                                line: 8
                             }
                         }
                     }
